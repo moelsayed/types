@@ -35,8 +35,17 @@ var (
 		Init(replicaSet).
 		Init(replicationController).
 		Init(daemonSet).
-		Init(workloadTypes)
+		Init(workloadTypes).
+		Init(configMapTypes)
 )
+
+func configMapTypes(schemas *types.Schemas) *types.Schemas {
+	return ConfigMapTypes(&Version, schemas)
+}
+
+func ConfigMapTypes(version *types.APIVersion, schemas *types.Schemas) *types.Schemas {
+	return schemas.MustImport(version, v1.ConfigMap{})
+}
 
 func namespaceTypes(schemas *types.Schemas) *types.Schemas {
 	return NamespaceTypes(&Version, schemas)
@@ -57,6 +66,7 @@ func NamespaceTypes(version *types.APIVersion, schemas *types.Schemas) *types.Sc
 			&m.AnnotationField{Field: "templates", Object: true},
 			&m.AnnotationField{Field: "prune"},
 			&m.AnnotationField{Field: "answers", Object: true},
+			&m.AnnotationField{Field: "releases", Object: true},
 		).
 		MustImport(version, v1.Namespace{}, struct {
 			Description string                 `json:"description"`
@@ -66,6 +76,7 @@ func NamespaceTypes(version *types.APIVersion, schemas *types.Schemas) *types.Sc
 			Prune       bool                   `json:"prune"`
 			ExternalID  string                 `json:"externalId"`
 			Tags        []string               `json:"tags"`
+			Releases    map[string]ReleaseInfo `json:"releases"`
 		}{})
 }
 

@@ -88,3 +88,11 @@ type Target struct {
 	Port              *int32   `json:"port"`
 	Protocol          string   `json:"protocol" norman:"type=enum,options=TCP|UDP"`
 }
+
+type ReleaseInfo struct {
+	Name              string `json:"name"`
+	Version           string `json:"version"`
+	CreateTimestamp   string `json:"createTimestamp"`
+	ModifiedAt        string `json:"modifiedAt"`
+	TemplateVersionID string `json:"templateVersionId"`
+}
