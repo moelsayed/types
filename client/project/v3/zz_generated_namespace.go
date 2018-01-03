@@ -18,6 +18,7 @@ const (
 	NamespaceFieldOwnerReferences      = "ownerReferences"
 	NamespaceFieldProjectID            = "projectId"
 	NamespaceFieldPrune                = "prune"
+	NamespaceFieldReleases             = "releases"
 	NamespaceFieldRemoved              = "removed"
 	NamespaceFieldState                = "state"
 	NamespaceFieldStatus               = "status"
@@ -42,6 +43,7 @@ type Namespace struct {
 	OwnerReferences      []OwnerReference       `json:"ownerReferences,omitempty"`
 	ProjectID            string                 `json:"projectId,omitempty"`
 	Prune                *bool                  `json:"prune,omitempty"`
+	Releases             map[string]ReleaseInfo `json:"releases,omitempty"`
 	Removed              string                 `json:"removed,omitempty"`
 	State                string                 `json:"state,omitempty"`
 	Status               *NamespaceStatus       `json:"status,omitempty"`
