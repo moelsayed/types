@@ -48,6 +48,8 @@ type EtcdBackup struct {
 	BackupConfig BackupConfig `yaml:",omitempty" json:"backupConfig,omitempty"`
 	// backup status
 	Status EtcdBackupStatus `yaml:"status" json:"status,omitempty"`
+	// backup state
+	State string `json:"state,omitempty" yaml:"state,omitempty"`
 }
 
 type EtcdBackupStatus struct {
