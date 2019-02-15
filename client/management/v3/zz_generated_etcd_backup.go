@@ -17,6 +17,7 @@ const (
 	EtcdBackupFieldNamespaceId     = "namespaceId"
 	EtcdBackupFieldOwnerReferences = "ownerReferences"
 	EtcdBackupFieldRemoved         = "removed"
+	EtcdBackupFieldState           = "state"
 	EtcdBackupFieldStatus          = "status"
 	EtcdBackupFieldUUID            = "uuid"
 )
@@ -34,6 +35,7 @@ type EtcdBackup struct {
 	NamespaceId     string            `json:"namespaceId,omitempty" yaml:"namespaceId,omitempty"`
 	OwnerReferences []OwnerReference  `json:"ownerReferences,omitempty" yaml:"ownerReferences,omitempty"`
 	Removed         string            `json:"removed,omitempty" yaml:"removed,omitempty"`
+	State           string            `json:"state,omitempty" yaml:"state,omitempty"`
 	Status          *EtcdBackupStatus `json:"status,omitempty" yaml:"status,omitempty"`
 	UUID            string            `json:"uuid,omitempty" yaml:"uuid,omitempty"`
 }
